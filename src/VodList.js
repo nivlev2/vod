@@ -1,5 +1,8 @@
 import {useEffect} from 'react'
+import {Route,NavLink,Switch} from 'react-router-dom'
+import SingleMovie from './SingleMovie'
 import axios from 'axios'
+import {v4 as uuid} from 'uuid'
 function VodList(props){
     useEffect(()=>{
         const getData = async () => {
@@ -17,14 +20,12 @@ function VodList(props){
               <div className="row border">
                   {props.movies_arr.map(item =>{
                       return(
-                      <div className="col-lg-6  shadow">
+                      <div key={uuid()} className="col-lg-6  shadow">
                           <div className="m-3 p-2">
                         <img className="float-start w-25" src={item.Poster} alt={item.title}></img>
                           <h3>{item.Title}</h3>
                           <p>Year:{item.Year}</p>
-                          <Link className="btn btn-info" onClick={()=>{
-                              props.setSQ(item.imdbID)
-                          }} to="/move/:id">MoreInfo</Link>
+                          <NavLink className="btn btn-info" to="/movie">MoreInfo</NavLink>
                           <button onClick={()=>{
                               props.setSQ(item.imdbID)
                           }} className="btn btn-info">More info</button>
