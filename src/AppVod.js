@@ -12,6 +12,7 @@ function AppVod(){
     const [query,setQuery] = useState("")
     const setSQ = (id)=>{
         setQuery(id)
+        console.log(query);
     }
     // TODO ליצור ראוט שלוקח לעמוד של קומפוננטה של סינגל מובי ולהעביר את הקווארי בתור פרמטר של היו אר אל ושם לעשות גט למובי הספציפי הזה
     console.log(query);

@@ -6,12 +6,12 @@ import SingleMovie from './SingleMovie';
 function App() {
   return (
     <div className="App">
-      <Switch>
-        <Route exact path="/" component={AppVod}/>
-        <Route exact path="/movie/:id" component={SingleMovie}/>
+      <Switch>                
+        <Route exact path="/" component={AppVod}></Route>
+
+        <Route exact path="/movie" component={SingleMovie}></Route>
       </Switch>
       
-      <AppVod/>
     </div>
   );
 }
