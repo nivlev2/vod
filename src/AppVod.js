@@ -9,19 +9,22 @@ function AppVod(){
     const movies_arr = []
     const {arr,changeArr} = getDataState(movies_arr);
     const [movieName,setMovieName] = useState("black")
-    const inputValue = (e) =>{
-        console.log(e.target.value);
+    const [query,setQuery] = useState("")
+    const setSQ = (id)=>{
+        setQuery(id)
     }
+    // TODO ליצור ראוט שלוקח לעמוד של קומפוננטה של סינגל מובי ולהעביר את הקווארי בתור פרמטר של היו אר אל ושם לעשות גט למובי הספציפי הזה
+    console.log(query);
     const searchMovie = (val)=>{
         setMovieName(val)
-        console.log(movieName);
     }
+    console.log(movieName);
     console.log(arr);
     return(
         <div>
         <h1>Vod work</h1>
-        <NavBar searchMovie={searchMovie} inputValue={inputValue}/>
-        <VodList movies_arr={arr} changeArr={changeArr}/>
+        <NavBar searchMovie={searchMovie} />
+        <VodList setSQ={setSQ} movieName={movieName} movies_arr={arr} changeArr={changeArr}/>
         </div>
     )
 }

@@ -4,19 +4,17 @@ function VodList(props){
     useEffect(()=>{
         const getData = async () => {
             try{
-                // const resp = await axios.get('http://www.omdbapi.com/?s=black&apikey=fd68d780')
-                // props.changeArr(resp.data.Search)
-                // console.log(resp.data.Search);
-    
+                const resp = await axios.get(`http://www.omdbapi.com/?s=${props.movieName}&apikey=fd68d780`)
+                props.changeArr(resp.data.Search)    
             }catch(e){
                 console.log(e);
             }
         }
         getData()
-    },[props.movies_arr])      
+    },[props.movieName])      
       return (
           <div className="container">
-              <div className="row">
+              <div className="row border">
                   {props.movies_arr.map(item =>{
                       return(
                       <div className="col-lg-6  shadow">
@@ -24,7 +22,9 @@ function VodList(props){
                         <img className="float-start w-25" src={item.Poster} alt={item.title}></img>
                           <h3>{item.Title}</h3>
                           <p>Year:{item.Year}</p>
-                          <button className="btn btn-info">More info</button>
+                          <button onClick={()=>{
+                              props.setSQ(item.imdbID)
+                          }} className="btn btn-info">More info</button>
                           </div>
                       </div>
                       )
