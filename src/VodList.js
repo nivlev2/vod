@@ -22,6 +22,9 @@ function VodList(props){
                         <img className="float-start w-25" src={item.Poster} alt={item.title}></img>
                           <h3>{item.Title}</h3>
                           <p>Year:{item.Year}</p>
+                          <Link className="btn btn-info" onClick={()=>{
+                              props.setSQ(item.imdbID)
+                          }} to="/move/:id">MoreInfo</Link>
                           <button onClick={()=>{
                               props.setSQ(item.imdbID)
                           }} className="btn btn-info">More info</button>
