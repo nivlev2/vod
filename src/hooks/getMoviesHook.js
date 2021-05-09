@@ -1,12 +1,12 @@
 import {useState} from 'react'
 
-function getDataState(intialval){
+function GetDataState(intialval){
     const [arr,setArr] = useState(intialval)
 
     const changeArr = (newArr)=>{
-        arr.splice(0,arr.length,...newArr)
+        setArr([...newArr])
     }
     return{arr,changeArr}
 }
 
-export default getDataState
+export default GetDataState

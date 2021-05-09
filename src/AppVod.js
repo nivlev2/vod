@@ -1,5 +1,5 @@
-import { render } from '@testing-library/react'
-import {useState} from 'react'
+// import { render } from '@testing-library/react'
+// import {useState} from 'react'
 import VodList from './VodList'
 import getDataState from './hooks/getMoviesHook'
 function AppVod(){
@@ -9,7 +9,7 @@ function AppVod(){
     return(
         <div>
         <h1>Vod work</h1>
-        <VodList changeArr={changeArr}/>
+        <VodList movies_arr={arr} changeArr={changeArr}/>
         </div>
     )
 }
