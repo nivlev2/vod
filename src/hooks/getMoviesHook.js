@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import React,{useState} from 'react'
 
 function GetDataState(intialval){
     const [arr,setArr] = useState(intialval)
