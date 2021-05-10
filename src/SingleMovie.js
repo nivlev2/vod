@@ -1,4 +1,5 @@
-function SingleMovie(){
+import {useEffect} from 'react'
+function SingleMovie(props){
     return(
         <div>
         <h1>single movie work</h1>
