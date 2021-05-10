@@ -8,8 +8,7 @@ function App() {
     <div className="App">
       <Switch>                
         <Route exact path="/" component={AppVod}></Route>
-
-        <Route exact path="/movie" component={SingleMovie}></Route>
+        <Route exact path="/:id" component={AppVod}></Route>
       </Switch>
       
     </div>

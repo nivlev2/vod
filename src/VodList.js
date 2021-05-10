@@ -27,7 +27,8 @@ function VodList(props){
                           <p>Year:{item.Year}</p>
                           <Link onClick={()=>{
                               props.setSQ(item.imdbID)
-                          }} className="btn btn-info"  to={`/movie/${item.imdbID}`}>MoreInfo</Link>
+                              props.moveToSingle()
+                          }} className="btn btn-info"  to={`/${item.imdbID}`}>MoreInfo</Link>
                           {/* <button onClick={()=>{
                               props.setSQ(item.imdbID)
                           }} className="btn btn-info">More info</button> */}
