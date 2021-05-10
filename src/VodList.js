@@ -7,7 +7,7 @@ function VodList(props){
     useEffect(()=>{
         const getData = async () => {
             try{
-                const resp = await axios.get(`http://www.omdbapi.com/?s=${props.movieName}&apikey=fd68d780`)
+                const resp = await axios.get(`https://www.omdbapi.com/?s=${props.movieName}&apikey=fd68d780`)
                 props.changeArr(resp.data.Search)    
             }catch(e){
                 console.log(e);

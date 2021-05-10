@@ -8,7 +8,7 @@ function SingleMovie (props){
     const [movie,setMovie] = useState('')
     useEffect(()=>{
         const getMovieData =async ()=>{
-            const resp = await axios.get(`http://www.omdbapi.com/?i=${props.query}&apikey=fd68d780`)
+            const resp = await axios.get(`https://www.omdbapi.com/?i=${props.query}&apikey=fd68d780`)
             console.log(resp.data);
             setMovie(resp.data)
         }
