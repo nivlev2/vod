@@ -16,11 +16,11 @@ function VodList(props){
         getData()
     },[props.movieName])      
       return (
-          <div className="container">
+          <div className="container my-2">
               <div className="row border">
                   {props.movies_arr.map(item =>{
                       return(
-                      <div key={uuid()} className="col-lg-6  shadow">
+                      <div key={uuid()} className="col-md-6  shadow">
                           <div className="m-3 p-2">
                         <img className="float-start w-25" src={item.Poster} alt={item.title}></img>
                           <h3>{item.Title}</h3>

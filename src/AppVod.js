@@ -1,16 +1,17 @@
-// import { render } from '@testing-library/react'
-// import {useState} from 'react'
 
 import React,{useState} from 'react'
 import VodList from './VodList'
 import getDataState from './hooks/getMoviesHook'
 import NavBar from './NavBar'
+import {Route,Switch} from 'react-router-dom'
+import './AppVod.css'
+
 import SingleMovie from './SingleMovie'
+import NotFound from './NotFound'
 function AppVod(){
     const movies_arr = []
     const {arr,changeArr} = getDataState(movies_arr);
     const [movieName,setMovieName] = useState("black")
-    
     const [query,setQuery] = useState("")
     const setSQ = (id)=>{
         setQuery(id)
@@ -23,15 +24,25 @@ function AppVod(){
     }
     console.log(movieName);
     console.log(arr);
+
     return(
-        <div>
-        <h1>Vod work</h1>
-        {onSingle? <SingleMovie  /> :
-        <div>
-        <NavBar searchMovie={searchMovie} />
-        <VodList setSQ={setSQ} movieName={movieName} movies_arr={arr} changeArr={changeArr}/>
-        </div>
-        }
+        <div className="container-fluid">
+        {/* <div>
+            <NavBar  searchMovie={searchMovie} />
+            <VodList changeToSingle={changeToSingle} setSQ={setSQ} movieName={movieName} movies_arr={arr} changeArr={changeArr}/>
+        </div> */}
+        
+        <Switch>       
+        <Route exact path="/" render={()=>{
+                    return(<div>
+                    <NavBar  searchMovie={searchMovie} />
+                    <VodList setSQ={setSQ} movieName={movieName} movies_arr={arr} changeArr={changeArr}/>
+                </div> )       
+        }}></Route>
+         
+            <Route exact path="/:id" render={()=><SingleMovie query={query}/>}></Route>
+            <Route render={()=><NotFound/>}></Route>
+        </Switch>
         </div>
     )
 }
