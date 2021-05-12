@@ -27,7 +27,10 @@ function AppVod(){
 
     return(
         <div className="container-fluid">
-        {/* <div>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" />
+  <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+</div>        {/* <div>
             <NavBar  searchMovie={searchMovie} />
             <VodList changeToSingle={changeToSingle} setSQ={setSQ} movieName={movieName} movies_arr={arr} changeArr={changeArr}/>
         </div> */}
