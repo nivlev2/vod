@@ -1,0 +1,16 @@
+  .DarkNav{
+    background-color: rgb(180, 180, 180);
+    color: black;
+    height: 40px;
+    padding-top: 7px;
+    /* border-radius: 10px; */
+  }
+  .RegularNav{
+    background-color:rgb(127, 127, 233);
+    color: white;
+    height: 40px;
+    padding-top: 7px;
+
+    /* border-radius: 10px; */
+
+  }

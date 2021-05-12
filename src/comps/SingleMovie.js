@@ -1,35 +1,37 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,useContext} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import './SingleMovie.css'
+import '../styles/SingleMovie.css'
 import NotFound from './NotFound';
+import {ThemeContext} from '../contexts/ThemeContext'
 function SingleMovie (props){
-    console.log(props);
     const [movie,setMovie] = useState('')
+    const {theme} = useContext(ThemeContext)
     useEffect(()=>{
         const getMovieData =async ()=>{
             const resp = await axios.get(`https://www.omdbapi.com/?i=${props.query}&apikey=fd68d780`)
-            console.log(resp.data);
             setMovie(resp.data)
         }
         getMovieData()
     },[props.query])
-    console.log(movie);
     if(!props.query){
         return <NotFound/>
     }
+    const btnMode = theme? "SingleMovie-backHome-Dark":"SingleMovie-backHome"
+    const card = theme? "bg-secondary":"bg-white"
+    const information = theme? "bg-danger rounded-3":"bg-primary rounded-3"
     return(
         <div className="container SingleMovie ">
             <div className="row ">
             <div className="row">
                 <div className="">
-                    <div className="col-md-3 SingleMovie-backHome mx-auto m-2 d-flex ">
-                    <Link className=" w-75 text-decoration-none text-light mx-auto" exact to="/">Back Home</Link>
+                    <div className={`col-md-3 ${btnMode} mx-auto m-2 d-flex `}>
+                    <Link className={` w-75 text-decoration-none text-light mx-auto`} exact to="/">Back Home</Link>
                     </div>
                     </div>
                     </div>
 
-        <div className="p-2 col-md-10 mx-auto  shadow p-3 mb-5 bg-white rounded  ">
+        <div className={`p-2 col-md-10 mx-auto  shadow p-3 mb-5 ${card} rounded  `}>
             <div className="col-lg-5">
             <img src={movie.Poster} alt={movie.Title} className="float-start width mx-auto"/>
 
@@ -38,13 +40,13 @@ function SingleMovie (props){
             {/* <Link className="w-25 badge bg-primary text-decoration-none  mx-5 " exact to="/">Back Home</Link> */}
 
             <div className="  h1 SingleMovie-title m-5 ">Name: {movie.Title}</div>
-            <p className="bg-dark  text-light  mx-5">Actors: {movie.Actors}</p>
-            <p className ="bg-warning  text-light mx-5"> Year: {movie.Year}</p>
-            <p className ="bg-danger   text-light  mx-5">BoxOffice: {movie.BoxOffice}</p>
-            <p className ="bg-info   text-light  mx-5">Released: 
+            <p className={`${information}  text-light  mx-5"`}>Actors: {movie.Actors}</p>
+            <p className ={`${information}  text-light mx-5`}> Year: {movie.Year}</p>
+            <p className ={`${information}   text-light  mx-5`}>BoxOffice: {movie.BoxOffice}</p>
+            <p className ={`${information}   text-light  mx-5`}>Released: 
                 {movie.Released}</p>
-            <p className ="bg-success   text-light  mx-5">Imdb rating: {movie.imdbRating}</p>
-            <p className ="bg-primary  text-light  mx-5">Imdb votes: {movie.imdbVotes}</p>
+            <p className ={`${information}   text-light  mx-5`}>Imdb rating: {movie.imdbRating}</p>
+            <p className ={`${information}  text-light  mx-5`}>Imdb votes: {movie.imdbVotes}</p>
 
             </div>
         </div>
