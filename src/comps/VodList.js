@@ -33,9 +33,9 @@ function VodList(props){
     const {theme} = useContext(ThemeContext)    
     const background = theme? `col-sm-6 shadow bg-secondary text-light`:`col-sm-6 shadow` 
       return (
-          <div className="container">
+          <div className="container py-5">
               {!error?
-                            <div className="row border">
+                            <div className="row border py-5">
                   {props.movies_arr.map(item =>{
                       return(
                       <div key={uuid()} className={background}>
@@ -53,7 +53,7 @@ function VodList(props){
                       </div>
                       )
                   })}
-              </div>:<div className="container p-5 my-5 d-flex align-items-center justify-content-center bg-danger text-white"><h1>{errorMessage}</h1></div>
+              </div>:<div className="container py-5 d-flex align-items-center justify-content-center bg-danger text-white"><h1>{errorMessage}</h1></div>
 
             }
           </div>
