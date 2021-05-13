@@ -19,13 +19,15 @@ function NavBar (props){
             <div className="row ">
                 <div className={theme? "bg-secondary":"light-search-bg"}>
                     <div className="col-lg-7 m-2 d-flex">
-                        <input value={movie} onChange={inputValue} type="text" placeholder="search movie" className="form-control w-75"/>
-                        
-                        <button onClick={()=>{
-                            props.searchMovie(movie)
-                        }} className={theme? "btn btn-danger float-start":"btn btn-primary float-start"}>Search</button>
-                        <div className={`${loading} float-start`}></div>
+                        <form onSubmit={(e)=>{
+                            e.preventDefault()
+                           return props.searchMovie(movie)
+                        }} className="col-md-12 form-group">
+                        <input value={movie} onChange={inputValue} type="text" placeholder="search movie" className="float-start form-control w-75"/>
 
+                        <button  className={theme? "btn btn-danger float-start":"btn btn-primary float-start"}>Search</button>
+                        <div className={`${loading} float-start`}></div>
+                        </form>
                         </div>
                         </div>
                     </div>
