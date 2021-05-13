@@ -1,19 +1,12 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Redirect,useParams} from 'react-router-dom'
 function NotFound(){
+    let id =useParams()
+    console.log(id);
     
     return (
         
-        <div className="container">
-            <div className="card">
-                <div className="card-title">Not Found</div>
-                <div className="card-text">
-                     <Link className="badge bg-dark text-light text-decoration-none" to="/">click here</Link>
-                     to go back home 
-                </div>
-            </div>
-        </div>
-    )
+        <Redirect to="/" />)
 }
 
 export default NotFound

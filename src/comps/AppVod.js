@@ -16,7 +16,6 @@ function AppVod(){
     const [query,setQuery] = useState("")
     const [loading,setLoading] = useState(true)
     const {theme,changeTheme} = useContext(ThemeContext)
-    
     const setSQ = (id)=>{
         setQuery(id)
     }
@@ -36,10 +35,7 @@ function AppVod(){
   <input onClick={changeTheme} className="form-check-input ms-5" type="checkbox" id="flexSwitchCheckChecked" />
 
 </div>   
-</div>     {/* <div>
-            <NavBar  searchMovie={searchMovie} />
-            <VodList changeToSingle={changeToSingle} setSQ={setSQ} movieName={movieName} movies_arr={arr} changeArr={changeArr}/>
-        </div> */}
+</div>     
         
         <Switch>       
         <Route exact path="/" render={()=>{
@@ -49,9 +45,9 @@ function AppVod(){
                 </div> )       
         }}></Route>
             
-            <Route exact path="/:id" render={()=>
-            <SingleMovie query={query}/>}></Route>
-            <Route render={()=><NotFound/>}></Route>
+            <Route exact path="/:id" render={({match})=>
+            <SingleMovie match={match} query={query}/>}></Route>
+            <Route component={NotFound}></Route>
         </Switch>
         </div>
     )

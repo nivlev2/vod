@@ -1,32 +1,44 @@
 import React,{useEffect,useState,useContext} from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {Link,Redirect} from 'react-router-dom'
 import '../styles/SingleMovie.css'
-import NotFound from './NotFound';
 import {ThemeContext} from '../contexts/ThemeContext'
 function SingleMovie (props){
     const [movie,setMovie] = useState('')
     const {theme} = useContext(ThemeContext)
+    const id = props.match.params.id
     useEffect(()=>{
         const getMovieData =async ()=>{
-            const resp = await axios.get(`https://www.omdbapi.com/?i=${props.query}&apikey=fd68d780`)
-            setMovie(resp.data)
+            if(!localStorage["movie"]){
+                const resp =id?await axios.get(`https://www.omdbapi.com/?i=${id}&apikey=fd68d780`) :  await axios.get(`https://www.omdbapi.com/?i=${props.query}&apikey=fd68d780`)
+
+                setMovie(resp.data)
+                localStorage.setItem("movie",JSON.stringify(resp.data)) 
+            }else{
+                setMovie(JSON.parse(localStorage["movie"]))
+            }
+            // const resp = await axios.get(`https://www.omdbapi.com/?i=${props.query}&apikey=fd68d780`)
+            // setMovie(resp.data)
+            // localStorage.setItem("movie",JSON.stringify(resp.data))
         }
         getMovieData()
     },[props.query])
-    if(!props.query){
-        return <NotFound/>
-    }
+    // if(!props.query && !props.match.params.id){
+    //     return <NotFound/>
+    // }
     const btnMode = theme? "SingleMovie-backHome-Dark":"SingleMovie-backHome"
     const card = theme? "bg-secondary":"bg-white"
     const information = theme? "bg-danger rounded-3":"bg-primary rounded-3"
+    if(movie.Error){
+        return <Redirect to= '/'/>
+    }
     return(
         <div className="container SingleMovie ">
             <div className="row ">
             <div className="row">
                 <div className="">
                     <div className={`col-md-3 ${btnMode} mx-auto m-2 d-flex `}>
-                    <Link className={` w-75 text-decoration-none text-light mx-auto`} exact to="/">Back Home</Link>
+                    <Link  className={` w-75 text-decoration-none text-light mx-auto`}  to="/">Back Home</Link>
                     </div>
                     </div>
                     </div>

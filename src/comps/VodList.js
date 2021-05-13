@@ -6,6 +6,9 @@ import {v4 as uuid} from 'uuid'
 function VodList(props){
     const [error,setError] = useState(false)
     const [errorMessage,setErrorMessage] = useState('')
+    if(localStorage["movie"]){
+        localStorage.removeItem("movie")
+    }
     useEffect(()=>{
         const getData = async () => {
             props.loading(true)
