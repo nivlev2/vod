@@ -31,7 +31,7 @@ function VodList(props){
          getData()
     },[props.movieName]) 
     const {theme} = useContext(ThemeContext)    
-    const background = theme? `col-md-6 shadow bg-secondary text-light`:`col-md-6 shadow` 
+    const background = theme? `col-sm-6 shadow bg-secondary text-light`:`col-sm-6 shadow` 
       return (
           <div className="container">
               {!error?
